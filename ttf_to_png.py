@@ -12,9 +12,18 @@ TEXTS_DIR = "texts"
 IMAGES_DIR = "images"
 # Get path using sys args, set up font loader
 FINAL_PATH = sys.argv[1]
+FONT_SIZE = sys.argv[2]
+src_dir = 'images'
+dst_dir = 'dataset'
+# Remove directory of cropped images if it exists, make it if not
+if not os.path.exists(dst_dir):
+    os.makedirs(dst_dir)
+else:
+    shutil.rmtree(dst_dir)
+print("========= Starting TTF to PNG conversion =========")
+thumb_width = int(FONT_SIZE)
 for file in os.listdir(FINAL_PATH):
     TTF_PATH = FINAL_PATH + file
-    FONT_SIZE = sys.argv[2]
     TTF_NAME, TTF_EXT = os.path.splitext(os.path.basename(TTF_PATH))
     ttf = TTFont(TTF_PATH, 0, verbose=0, allowVID=0, ignoreDecompileErrors=True, fontNumber=-1)
     # Make temporary directories
@@ -39,15 +48,10 @@ for file in os.listdir(FINAL_PATH):
         output_png = IMAGES_DIR + "/" + TTF_NAME + "_" + name + "_" + FONT_SIZE + ".png"
         subprocess.call(["convert", "-font", TTF_PATH, "-pointsize", FONT_SIZE, "label:@" + input_txt, output_png])
 
-    print("TTF -> Image Conversion Finished")
+    print("TTF -> Image Conversion finished for", str(file))
 
     # Normalizing the images to all be of the correct size
-    src_dir = 'images'
-    dst_dir = 'cropped_images'
-    thumb_width = 28
-
     files = glob.glob(os.path.join(src_dir, '*.png'))
-
     for f in files:
         im = Image.open(f).convert('RGB')
         im = ImageOps.invert(im)
@@ -65,7 +69,8 @@ for file in os.listdir(FINAL_PATH):
         else:
             im_thumb.save(os.path.join(dst_dir, ftitle + '_thumbnail' + fext), quality=95)
             
-    print("Images -> Cropped Images Finished")
-    # Deleting temporary directories
-    for d in [TEXTS_DIR, IMAGES_DIR]:
-        shutil.rmtree(d)
+    print("Images -> Cropped Images for", str(file))
+print("========= Full TTF to PNG conversion done =========")
+# Deleting temporary directories
+for d in [TEXTS_DIR, IMAGES_DIR]:
+    shutil.rmtree(d)
