@@ -5,7 +5,7 @@ import subprocess
 import shutil
 import glob
 
-from PIL import Image
+from PIL import Image, ImageOps
 from fontTools.ttLib import TTFont
 
 TEXTS_DIR = "texts"
@@ -47,7 +47,8 @@ thumb_width = 28
 files = glob.glob(os.path.join(src_dir, '*.png'))
 
 for f in files:
-    im = Image.open(f)
+    im = Image.open(f).convert('RGB')
+    im = ImageOps.invert(im)
     im_thumb = im.resize((thumb_width, thumb_width), Image.LANCZOS)
     ftitle, fext = os.path.splitext(os.path.basename(f))
     # Ommitting all non-readable UTF characters
