@@ -1,1 +1,2 @@
 letterEMNIST/
+.DS_Store
