@@ -1,9 +1,6 @@
 ## Document
 https://www.overleaf.com/project/626aff8056d3514ce994b2df
 
-## Slides
-https://docs.google.com/presentation/d/1p55WlzDvCrfFoNKFYpQrhhqhrjXDe8ZocODBf0TPhbY/edit#slide=id.p
-
 ## Deployment for TTF_to_PNG.py
 
 This script works as follows:
