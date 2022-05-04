@@ -3,3 +3,4 @@ EMNIST/
 data/collected_letters_pngs/
 data/digital_letters_pngs/
 .ipynb_checkpoints/
+__pycache__
