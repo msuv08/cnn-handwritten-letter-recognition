@@ -231,7 +231,7 @@ def display_kernels(conv_weights):
     plt.tight_layout()
 
 # convolves the image and displays this convolution per kernel
-def display_intermediary_inputs(conv_layer, img):
+def display_conv_outputs(conv_layer, img):
     num_kernels = conv_layer.weight.shape[0]
     outputs = conv_layer(img)
     # "unnecessary code" to get square-like dimensions to align different kernels
@@ -246,7 +246,35 @@ def display_intermediary_inputs(conv_layer, img):
             out = outputs[0][kernel]
             axes[i,j].matshow(out.detach().numpy(), cmap='gray')
             kernel += 1
-            title = 'Kernel ' + str(kernel)
+            title = 'Conv ' + str(kernel)
+            axes[i,j].set_title(title)
+            if kernel >= num_kernels: break
+    # deletes the unnecessary cells at the end
+    for i in range(kernel, rows*cols):
+        r = i // cols
+        c = i % cols
+        fig.delaxes(axes[r, c])
+    plt.setp(axes, xticks=[], yticks=[])
+    plt.tight_layout()
+    return outputs
+
+# Given a pooling layer and outputs from a 2d convolution layer, shows how the input is transformed
+def display_pool_outputs(pool_layer, conv_output):
+    num_kernels = conv_output.shape[1]
+    outputs = pool_layer(conv_output)
+    # "unnecessary code" to get square-like dimensions to align different kernels
+    cols = num_kernels // int(num_kernels ** 0.5)
+    rows = ceil(num_kernels / cols)
+    
+    # display convolved input
+    fig, axes = plt.subplots(rows, cols, figsize=(9,9))
+    kernel = 0
+    for i in range(rows):
+        for j in range(cols):
+            out = outputs[0][kernel]
+            axes[i,j].matshow(out.detach().numpy(), cmap='gray')
+            kernel += 1
+            title = 'Pool ' + str(kernel)
             axes[i,j].set_title(title)
             if kernel >= num_kernels: break
     # deletes the unnecessary cells at the end
