@@ -8,12 +8,14 @@ import matplotlib.pyplot as plt
 from tqdm.notebook import tqdm
 import torch.nn.functional as F
 
+import torchvision.transforms as transforms
+
 '''
 Architecture dealing with data initialization and retrieval
 '''
 
 # creates a data loader given an array of data and a matching array of labels
-def create_loader(data, label, batch_size = 64):
+def create_loader(data, label, batch_size=64):
     # unsqueeze first dimension since data shape: (x, 28, 28) convert to torch of shape (x, 1, 28, 28)
     data_set = torch.utils.data.TensorDataset(torch.Tensor(data).unsqueeze(dim=1), torch.Tensor(label))
     data_loader = torch.utils.data.DataLoader(data_set, batch_size=batch_size, shuffle=True)
