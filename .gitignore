@@ -1,2 +1,4 @@
-letterEMNIST/
+EMNIST/
 .DS_Store
+data/collected_letters_pngs/
+data/digital_letters_pngs/
