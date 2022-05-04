@@ -1,5 +1,6 @@
 ## Document
-https://www.overleaf.com/project/626aff8056d3514ce994b2df
+LaTeX: https://www.overleaf.com/project/626aff8056d3514ce994b2df
+Docs: https://docs.google.com/document/d/1AzhL3GwHnokODFME3JMoKhNrin2qoaYS6MHlrjVUo7k/edit
 
 ## Deployment for TTF_to_PNG.py
 
