@@ -8,7 +8,6 @@ import glob
 from PIL import Image, ImageOps
 from fontTools.ttLib import TTFont
 
-
 TEXTS_DIR = "texts"
 IMAGES_DIR = "images"
 # Get path using sys args, set up font loader
