@@ -17,7 +17,7 @@ def convert_ttf(src_dir, dst_dir, force=False, verbose=False):
     SRC_DIR = os.path.join(os.getcwd(), src_dir)
     FONT_SIZE = "28"
     
-    num_ttfs = len([name for name in os.listdir(SRC_DIR) if name.endswith(".ttf")])
+    num_ttfs = len([name for name in os.listdir(SRC_DIR) if name.endswith(".ttf") or name.endswith(".otf")])
     
     # Remove output directories if it exist
     if os.path.exists(DST_DIR):
@@ -35,7 +35,7 @@ def convert_ttf(src_dir, dst_dir, force=False, verbose=False):
     thumb_width = int(FONT_SIZE)
     # goes through each ttf file
     for file in os.listdir(SRC_DIR):
-        if not file.endswith(".ttf"):
+        if not (file.endswith(".ttf") or file.endswith(".otf")):
             print("Ignored", file)
             continue
         TTF_PATH = os.path.join(SRC_DIR, file)

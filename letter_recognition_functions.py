@@ -11,7 +11,7 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 
 '''
-Architecture dealing with data initialization and retrieval
+Functions dealing with data initialization and retrieval
 '''
 
 # creates a data loader given an array of data and a matching array of labels
@@ -50,7 +50,7 @@ def combine_loaders(loader_1, loader_2, batch_size=64, fromEMNIST=False):
     return create_loader(combined_data, combined_label, batch_size=batch_size)
 
 '''
-Architecture to train and test our different models
+Functions to train and test our different models
 '''
 def train_network(model, train_loader, val_loader, criterion, optimizer, nepoch=100, display_losses=True, early_stopping=False):
     prev_loss = 69
@@ -135,7 +135,7 @@ def display_contingency_matrix(num_classes, pred, true):
 
 
 '''
-Architecture to analyze the neural network
+Functions to analyze the neural network
 '''
 from math import ceil
 
