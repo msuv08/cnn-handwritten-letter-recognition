@@ -13,11 +13,14 @@ be very effective at letter recognition given that a good dataset is used for tr
 the model.
 
 ## Read our NeurIPS Conference Paper!
-LaTeX: https://www.overleaf.com/project/626aff8056d3514ce994b2df
 
-Docs: https://docs.google.com/document/d/1AzhL3GwHnokODFME3JMoKhNrin2qoaYS6MHlrjVUo7k/edit
+- [Click here for PDF](https://drive.google.com/file/d/1Ue-gkw28zc_4sjh_6IPJXJ8qQ5CRBaPF/view?usp=sharing)
 
-<img src="https://user-images.githubusercontent.com/49384703/221442575-a9da3f91-0c65-4559-ab8b-5fe1ff33bdd2.png" width=500)
+- [Open-source LaTeX (Overleaf Project)](https://www.overleaf.com/project/626aff8056d3514ce994b2df)
+
+- [Check out the docs](https://docs.google.com/document/d/1AzhL3GwHnokODFME3JMoKhNrin2qoaYS6MHlrjVUo7k/edit)
+
+<img src="https://user-images.githubusercontent.com/49384703/221442575-a9da3f91-0c65-4559-ab8b-5fe1ff33bdd2.png" width=900>
 
 
 ### Deployment for TTF_to_PNG.py
